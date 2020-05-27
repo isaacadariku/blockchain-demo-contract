@@ -8,14 +8,14 @@ import { MyAsset } from './my-asset';
 @Info({title: 'MyAssetContract', description: 'My Smart Contract' })
 export class MyAssetContract extends Contract {
 
-    @Transaction(false)
+    @Transaction(false) // Ignoring
     @Returns('boolean')
     public async myAssetExists(ctx: Context, myAssetId: string): Promise<boolean> {
         const buffer = await ctx.stub.getState(myAssetId);
         return (!!buffer && buffer.length > 0);
     }
 
-    @Transaction()
+    @Transaction() // Accepting
     public async createMyAsset(ctx: Context, myAssetId: string, value: string): Promise<void> {
         const exists = await this.myAssetExists(ctx, myAssetId);
         if (exists) {

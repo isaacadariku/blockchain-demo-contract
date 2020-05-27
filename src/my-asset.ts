@@ -8,6 +8,7 @@ import { Object, Property } from 'fabric-contract-api';
 export class MyAsset {
 
     @Property()
+    
     public value: string;
 
 }
